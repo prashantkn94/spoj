@@ -12,7 +12,7 @@ int main() {
 	
 	for(int i=x;i<=n;++i)
 	for(int j=y;j<=m;++j){
-		if(i==x&&j==y)dp[i][j]=dp[i][j];
+		if(i==x&&j==y)continue;
 		else if(x==i)dp[i][j]=dp[i][j-1]-dp[i][j];
 		else if(y==j)dp[i][j]=dp[i-1][j]-dp[i][j];
 		else dp[i][j]=max(dp[i-1][j],dp[i][j-1])-dp[i][j];
