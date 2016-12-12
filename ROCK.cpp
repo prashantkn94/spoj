@@ -5,7 +5,6 @@ using namespace std;
 int a[200][200][2];
 int res[200][200];
 int main(){
-	freopen("c:\\in.txt","r",stdin);
 	int t;
 	cin>>t;
 	while(t--){
