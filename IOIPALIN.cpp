@@ -1,20 +1,27 @@
-#include <cstring>
-#include <cstdio>
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-int a[5003][5003];
-char s[5003];
+int a[5000][5000];
+int n;
+string s;
+int f(int i,int j){
+    if(i>=j)return 0;
+    if(a[i][j]>=0)return a[i][j];
+    else{
+        if(s[i]==s[j]){
+            a[i][j]=f(i+1,j-1);
+            //cout<<"a[i][j] is "<<a[i][j]<<endl;
+        }
+        else{
+        a[i][j]=1+min(f(i,j-1),f(i+1,j));
+        //cout<<"a[i][j] is "<<a[i][j]<<endl;
+    }
+    }
+    return a[i][j];
+}
 int main(){
-	int n;
-	scanf("%d",&n);
-	scanf("%s",s);
-	for(int i=0;i<n;++i)a[i][i]=0;
-	for(int i=n-1;i>=0;--i){
-		for(int j=i+1;j<n;++j){
-			if(s[i]==s[j])
-				a[i][j]=a[i+1][j-1];
-			else a[i][j]=1+min(a[i+1][j],a[i][j-1]);
-		}
-	}
-	printf("%d",a[0][n-1]);
+memset(a,-1,sizeof a);
+cin>>n;
+cin>>s;
+cout<<f(0,n-1)<<"\n";
+
 }
